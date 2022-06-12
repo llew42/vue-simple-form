@@ -40,15 +40,20 @@ export default {
 			// }
 		},
 	},
+	emits: ['toggle-favorite'],
+	// emits: {
+	// 	'toggle-favorite': function(id) {
+	// 		if (id) {
+	// 			return true;
+	// 		} else {
+	// 			console.warn('ID is missing');
+	// 			return false;
+	// 		}
+	// 	}
+	// },
 	data() {
 		return {
 			detailsAreVisible: false,
-			friend: {
-				id: "manuel",
-				name: "Manuel Lorenz",
-				phone: "0123 45678 91",
-				email: "manuel@localhost.com",
-			},
 		};
 	},
 	methods: {
