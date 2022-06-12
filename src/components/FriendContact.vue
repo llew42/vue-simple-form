@@ -8,6 +8,7 @@
 		<ul v-if="detailsAreVisible">
 			<li><strong>Phone:</strong> {{ phoneNumber }}</li>
 			<li><strong>Email:</strong> {{ emailAddress }}</li>
+			<button @click="deleteContact">Delete</button>
 		</ul>
 	</section>
 </template>
@@ -40,7 +41,7 @@ export default {
 			// }
 		},
 	},
-	emits: ['toggle-favorite'],
+	emits: ['toggle-favorite', 'delete-friend'],
 	// emits: {
 	// 	'toggle-favorite': function(id) {
 	// 		if (id) {
@@ -61,7 +62,10 @@ export default {
 			this.detailsAreVisible = !this.detailsAreVisible;
 		},
 		toggleFavorite() {
-				this.$emit('toggle-favorite', this.id);
+			this.$emit('toggle-favorite', this.id);
+		},
+		deleteContact() {
+			this.$emit('delete-friend', this.id)
 		} 
 	}
 };

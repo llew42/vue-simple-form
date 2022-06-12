@@ -3,6 +3,7 @@
     <header>
       <h1>My Friends</h1>
     </header>
+    <new-friend @add-contact="addContact"></new-friend>
     <ul>
       <li>
         <friend-contact
@@ -14,6 +15,7 @@
           :email-address="friend.email"
           :is-favorite="friend.isFavorite"
           @toggle-favorite="toggleFavoriteStatus"
+          @delete-friend="deleteFriend"
         >
         </friend-contact>
       </li>
@@ -47,7 +49,20 @@ export default {
     toggleFavoriteStatus(friendId) {
       const favoriteFriend = this.friends.find(friend => friend.id === friendId);
       favoriteFriend.isFavorite = !favoriteFriend.isFavorite;
-    }
+    },
+    addContact(name, email, phone) {
+      const newContact = {
+        id: new Date().toISOString(),
+        name: name,
+        email: email,
+        phone: phone,
+        isFavorite: false
+      };
+      this.friends.push(newContact);
+    },
+    deleteFriend(id) {
+      this.friends = this.friends.filter(friend => friend.id !== id);
+    } 
   }
 };
 </script>
